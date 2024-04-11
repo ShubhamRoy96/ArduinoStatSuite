@@ -29,7 +29,7 @@ jobs:
       run: mkdir _build
 
     - name: Restore Packages
-      run: nuget restore EzRep.sln
+      run: nuget restore ArduinoStatSuite.sln
 
     - name: Build Solution
       run: |
