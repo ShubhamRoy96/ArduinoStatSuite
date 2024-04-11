@@ -19,18 +19,6 @@ jobs:
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v2
 
-    - name: Setup NuGet
-      uses: NuGet/setup-nuget@v2.0.0
-
-    - name: Navigate to Workspace
-      run: cd $GITHUB_WORKSPACE
-
-    - name: Create Build Directory
-      run: mkdir _build
-
-    - name: Restore Packages
-      run: nuget restore ArduinoStatSuite.sln
-
     - name: Build Solution
       run: |
         msbuild.exe ArduinoStatSuite.sln /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl="../_build"
