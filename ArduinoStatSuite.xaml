@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ArduinoStatSuite"
         mc:Ignorable="d"
-        Title="Arduino Stat Suite Controller" Loaded="Window_Loaded" HorizontalAlignment="Center" VerticalAlignment="Center" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Width="240" Height="300" Closing="Window_Closing">
+        Title="Arduino Stat Suite Controller" Loaded="Window_Loaded" HorizontalAlignment="Center" VerticalAlignment="Center" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Width="240" Height="300" Closing="Window_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="6.956"/>

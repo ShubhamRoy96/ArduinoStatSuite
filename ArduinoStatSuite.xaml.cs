@@ -13,7 +13,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Forms;
 using LibreHardwareMonitor;
+using System.IO;
+using System.Reflection;
 
 namespace ArduinoStatSuite
 {
@@ -27,6 +30,23 @@ namespace ArduinoStatSuite
         {
             InitializeComponent();
             _functions = new Functions();
+            System.Windows.Forms.NotifyIcon ni = new System.Windows.Forms.NotifyIcon();            
+            ni.Icon = new System.Drawing.Icon(@"Resources\Main.ico");
+            ni.Visible = true;
+            ni.DoubleClick +=
+                delegate (object sender, EventArgs args)
+                {
+                    this.Show();
+                    this.WindowState = WindowState.Normal;
+                };
+        }
+
+        protected override void OnStateChanged(EventArgs e)
+        {
+            if (WindowState == System.Windows.WindowState.Minimized)
+                this.Hide();
+
+            base.OnStateChanged(e);
         }
 
         private bool IsConnectedtoArduino { get; set; }
@@ -48,7 +68,7 @@ namespace ArduinoStatSuite
             isConnected = _functions.ConnectToArduino(cmbPortSelector);
             if (!isConnected)
             {
-                MessageBox.Show("Unable to connect to selected port!", "Connection Failed", MessageBoxButton.OK);
+                System.Windows.MessageBox.Show("Unable to connect to selected port!", "Connection Failed", MessageBoxButton.OK);
                 return;
             }
             IsConnectedtoArduino = true;
@@ -66,7 +86,7 @@ namespace ArduinoStatSuite
             isDisconnected = _functions.DisconnectFromArduino();
             if (!isDisconnected)
             {
-                MessageBox.Show("Unable to disconnect from port!", "Disconnection Failed", MessageBoxButton.OK);
+                System.Windows.MessageBox.Show("Unable to disconnect from port!", "Disconnection Failed", MessageBoxButton.OK);
                 return;
             }
             IsConnectedtoArduino = false;

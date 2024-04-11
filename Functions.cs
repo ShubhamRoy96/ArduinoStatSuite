@@ -178,6 +178,7 @@ namespace ArduinoStatSuite
             string gpuLoad = "";
             string cpuLoad = "";
             string ramUsed = "";
+            string ramAvl = "";
             string CPUName = string.Empty;
             string GPUName = string.Empty;
 
@@ -244,9 +245,13 @@ namespace ArduinoStatSuite
                             {
                                 switch (s.Name)
                                 {
-                                    case "Used Memory":
+                                    case "Memory Used":
                                         decimal decimalRam = Math.Round((decimal)s.Value, 1);
                                         ramUsed = decimalRam.ToString();
+                                        break;
+                                    case "Memory Available":
+                                        decimal decimalRamAvl = Math.Round((decimal)s.Value, 1);
+                                        ramAvl = decimalRamAvl.ToString();
                                         break;
                                 }
                             }
