@@ -20,5 +20,10 @@ jobs:
       uses: microsoft/setup-msbuild@v2
 
     - name: Build Solution
-      run: |
-        msbuild.exe ArduinoStatSuite.sln /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl="../_build"
+      run: msbuild.exe ArduinoStatSuite.sln /p:platform="Any CPU" /p:configuration="Release"
+
+    - name: Upload Artefacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: EXE package
+        path: bin\Release\
